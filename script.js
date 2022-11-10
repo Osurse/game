@@ -16,14 +16,14 @@ window.addEventListener("load", function(){
                 } else if(e.key === ' '){
                     this.game.player.shootTop();
                 }
-                console.log(this.game.keys);
+              //  console.log(this.game.keys);
             });
 
             window.addEventListener("keyup", e => {
                 if (this.game.keys.indexOf(e.key) > -1) {
                     this.game.keys.splice(this.game.keys.indexOf(e.key), 1);
                 }
-                console.log(this.game.keys);
+               // console.log(this.game.keys);
             });
 
         }
@@ -58,8 +58,8 @@ window.addEventListener("load", function(){
     class Player{
         constructor(game){
             this.game = game;
-            this.width = 120;
-            this.height = 190;
+            this.width = 100;
+            this.height = 40;
             this.x = 20;
             this.y = 100;
             this.speedY = 0.5;
@@ -159,7 +159,7 @@ window.addEventListener("load", function(){
         }
         update()
         {
-            console.log(this.width-screen.width);
+        //    console.log(this.width-screen.width);
             if(this.x <= -(this.width-590 ))this.x = 0;
             else this.x  -= this.game.speed*this.speedModifier;
         }
@@ -198,6 +198,8 @@ window.addEventListener("load", function(){
     }
     
 
+
+    
     class UI{
         constructor(game){
             this.game = game;
@@ -225,11 +227,13 @@ window.addEventListener("load", function(){
                 context.textAlign = 'center';
                 let message1;
                 let message2;
-                if(this.game.score > this.winningScore)
+                if(this.game.score > this.game.winningScore)
                 {
+                    
                     message1 = 'You Win!';
                     message2 = 'Well done';
                 }else{
+
                     message1 = 'You lose';
                     message2 = 'Try again!';
                 }
@@ -256,7 +260,7 @@ window.addEventListener("load", function(){
             this.background = new Background(this);
             this.input = new InputHandler(this);
             this.keys = [];
-            this.ammo = 20;
+            this.ammo = 60;
             this.ammoTimer = 0;
             this.ammoInterval = 500;
             this.maxAmmo = 50;
@@ -265,9 +269,9 @@ window.addEventListener("load", function(){
             this.enemyInterval = 1000;
             this.gameOver = false;
             this.score= 0;
-            this.winningScore = 10;
+            this.winningScore = 80;
             this.gameTime = 0;
-            this.timeLimit = 20000;
+            this.timeLimit = 90000;
             this.speed = 1;
         }
 
